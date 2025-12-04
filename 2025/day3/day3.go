@@ -1,7 +1,7 @@
 package day3
 
 import (
-	"math"
+	"slices"
 )
 
 const zero = byte('0')
@@ -18,29 +18,29 @@ func findLargest(arr []byte) int {
 }
 
 func Solution(input []byte, k int) int {
-	var bankLen, i, sum int
-	for input[i] != newLn {
-		i += 1
-	}
-	bankLen = i
+	var sum int
+	bankLen := slices.Index(input, newLn)
 
 	offset := 0
 	for offset < len(input) {
+		localSum := 0
+		end := offset + bankLen
 		size := k
-		left := 0
-		i = 0
-		for i < bankLen {
-			if i == bankLen-size {
-				localLargestIdx := findLargest(input[offset+left : offset+i+1])
-				largestIdx := left + localLargestIdx
-				sum += int(input[offset+largestIdx]-zero) * int(math.Pow10(size-1))
+		leftBound := offset
+		i := 0
+		for i < end {
+			if i == end-size {
+				localLargestIdx := findLargest(input[leftBound : i+1])
+				largestIdx := leftBound + localLargestIdx
+				localSum = localSum*10 + int(input[largestIdx]-zero)
 				size -= 1
-				i = largestIdx + 1
-				left = i
+				leftBound = largestIdx + 1
+				i = leftBound
 			} else {
 				i += 1
 			}
 		}
+		sum += localSum
 		offset += bankLen + 1
 	}
 	return sum
