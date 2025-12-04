@@ -17,45 +17,7 @@ func findLargest(arr []byte) int {
 	return largestIdx
 }
 
-func add(largeLeft, largeRight byte) int {
-	result := (int(largeLeft-zero) * 10) + int(largeRight-zero)
-	return result
-}
-
-func Solution(input []byte) int {
-	var bankLen, i, out, left, right int
-	for input[i] != newLn {
-		i += 1
-	}
-
-	bankLen = i
-	// [1, 2, 4, 5]
-	for right < len(input) {
-		start := left
-		right += 1
-		i = right
-		for i < start+bankLen-1 {
-			if input[i] > input[left] {
-				left += right
-
-			} else if input[i] > input[right] {
-				// input
-			}
-		}
-		if input[right] > input[i] {
-			out += add(input[left], input[right])
-		} else {
-			out += add(input[left], input[i])
-		}
-		// before \n
-		right = i + 2
-		left = right
-	}
-
-	return out
-}
-
-func Solution2(input []byte, k int) int {
+func Solution(input []byte, k int) int {
 	var bankLen, i, sum int
 	for input[i] != newLn {
 		i += 1

@@ -9,7 +9,7 @@ import (
 
 func TestSolution(t *testing.T) {
 	input := []byte("12345\n12367\n11119\n99999") // 45 + 67 + 19 + 99
-	got := Solution(input)
+	got := Solution(input, 2)
 	want := 230
 	if got != want {
 		t.Errorf("got %d, want, %d", got, want)
@@ -34,7 +34,7 @@ func ReadFile(t *testing.T, fileName string) []byte {
 func TestFileSolution(t *testing.T) {
 	t.Run("input.txt", func(t *testing.T) {
 		data := ReadFile(t, "input.txt")
-		got := Solution(data)
+		got := Solution(data, 2)
 		want := 357
 		if got != want {
 			t.Errorf("got %d, want, %d", got, want)
@@ -43,7 +43,7 @@ func TestFileSolution(t *testing.T) {
 
 	t.Run("input2.txt", func(t *testing.T) {
 		data := ReadFile(t, "input2.txt")
-		got := Solution(data)
+		got := Solution(data, 2)
 		want := 17330
 		if got != want {
 			t.Errorf("got %d, want, %d", got, want)
@@ -53,7 +53,7 @@ func TestFileSolution(t *testing.T) {
 
 func TestSolution2(t *testing.T) {
 	input := []byte("511172113\n511172113\n224587191") // 1446
-	got := Solution2(input, 3)
+	got := Solution(input, 3)
 	want := 2337
 	if got != want {
 		t.Errorf("got %d, want, %d", got, want)
@@ -63,7 +63,7 @@ func TestSolution2(t *testing.T) {
 func TestFileSolution2(t *testing.T) {
 	t.Run("input.txt", func(t *testing.T) {
 		data := ReadFile(t, "input.txt")
-		got := Solution2(data, 12)
+		got := Solution(data, 12)
 		want := 3121910778619
 		if got != want {
 			t.Errorf("got %d, want, %d", got, want)
@@ -72,7 +72,7 @@ func TestFileSolution2(t *testing.T) {
 
 	t.Run("input2.txt", func(t *testing.T) {
 		data := ReadFile(t, "input2.txt")
-		got := Solution2(data, 12)
+		got := Solution(data, 12)
 		want := 171518260283767
 		if got != want {
 			t.Errorf("got %d, want, %d", got, want)
