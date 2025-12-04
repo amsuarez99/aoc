@@ -1,7 +1,6 @@
 package day3
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -9,9 +8,8 @@ const zero = byte('0')
 const newLn = byte('\n')
 
 func findLargest(arr []byte) int {
-	fmt.Printf("trying to find largest %s\n", string(arr))
 	var largestIdx int
-	for index, _ := range arr {
+	for index := range arr {
 		if arr[index] > arr[largestIdx] {
 			largestIdx = index
 		}
@@ -37,6 +35,12 @@ func Solution(input []byte) int {
 		right += 1
 		i = right
 		for i < start+bankLen-1 {
+			if input[i] > input[left] {
+				left += right
+
+			} else if input[i] > input[right] {
+				// input
+			}
 		}
 		if input[right] > input[i] {
 			out += add(input[left], input[right])
@@ -61,16 +65,13 @@ func Solution2(input []byte, k int) int {
 	offset := 0
 	for offset < len(input) {
 		size := k
-		fmt.Println("offset", offset)
 		left := 0
 		i = 0
 		for i < bankLen {
-			fmt.Println("i:", i)
 			if i == bankLen-size {
 				localLargestIdx := findLargest(input[offset+left : offset+i+1])
 				largestIdx := left + localLargestIdx
 				sum += int(input[offset+largestIdx]-zero) * int(math.Pow10(size-1))
-				fmt.Println("Adding", left, i, sum)
 				size -= 1
 				i = largestIdx + 1
 				left = i

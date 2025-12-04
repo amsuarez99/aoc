@@ -64,18 +64,18 @@ func TestFileSolution2(t *testing.T) {
 	t.Run("input.txt", func(t *testing.T) {
 		data := ReadFile(t, "input.txt")
 		got := Solution2(data, 12)
-		want := 357
+		want := 3121910778619
 		if got != want {
 			t.Errorf("got %d, want, %d", got, want)
 		}
 	})
 
-	// t.Run("input2.txt", func(t *testing.T) {
-	// 	data := ReadFile(t, "input2.txt")
-	// 	got := Solution(data)
-	// 	want := 17330
-	// 	if got != want {
-	// 		t.Errorf("got %d, want, %d", got, want)
-	// 	}
-	// })
+	t.Run("input2.txt", func(t *testing.T) {
+		data := ReadFile(t, "input2.txt")
+		got := Solution2(data, 12)
+		want := 171518260283767
+		if got != want {
+			t.Errorf("got %d, want, %d", got, want)
+		}
+	})
 }
