@@ -77,3 +77,28 @@ func TestFileSolution(t *testing.T) {
 		})
 	}
 }
+
+func TestFileSolution2(t *testing.T) {
+	tests := []struct {
+		fileName string
+		result   int
+	}{
+		{
+			fileName: "input.txt",
+			result:   43,
+		},
+		{
+			fileName: "input2.txt",
+			result:   8722,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.fileName, func(t *testing.T) {
+			data := ReadFile(t, tt.fileName)
+			transformedInput := TransformToMatrix(data)
+			result := Solution2(transformedInput)
+			assert.Equal(t, tt.result, result)
+		})
+	}
+}
